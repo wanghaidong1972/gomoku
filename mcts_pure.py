@@ -135,6 +135,30 @@ class MCTS(object):
         # Update value and visit count of nodes in this traversal.
         node.update_recursive(-leaf_value)
 
+    def _son_playout(self, node, state): # not grandson
+        """Run a single playout from the root to the leaf, getting a value at
+        the leaf and propagating it back through its parents.
+        State is modified in-place, so a copy must be provided.
+        """
+        # node = self._root
+        while(1):
+            if node.is_leaf():
+
+                break
+            # Greedily select next move.
+            action, node = node.select(self._c_puct)
+            state.do_move(action)
+
+        action_probs, _ = self._policy(state)
+        # Check for end of game
+        end, winner = state.game_end()
+        if not end:
+            node.expand(action_probs)
+        # Evaluate the leaf node by random rollout
+        leaf_value = self._evaluate_rollout(state)
+        # Update value and visit count of nodes in this traversal.
+        node.update_recursive(-leaf_value)
+
     def _evaluate_rollout(self, state, limit=1000):
         """Use the rollout policy to play until the end of the game,
         returning +1 if the current player wins, -1 if the opponent wins,
