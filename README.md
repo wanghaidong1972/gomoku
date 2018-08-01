@@ -62,3 +62,4 @@ The models (best_policy.model and current_policy.model) will be saved every a fe
 
 ### Further reading
 My article describing some details about the implementation in Chinese: [https://zhuanlan.zhihu.com/p/32089487](https://zhuanlan.zhihu.com/p/32089487) 
+"# gomoku" 
