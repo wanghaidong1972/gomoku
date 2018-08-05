@@ -76,6 +76,7 @@ class Board(object):
 
     def do_move(self, move):
         self.states[move] = self.current_player
+        # print("going to remove {}".format(move))
         self.availables.remove(move)
         self.current_player = (
             self.players[0] if self.current_player == self.players[1]

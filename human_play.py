@@ -9,13 +9,16 @@ Input your move in the format: 2,3
 from __future__ import print_function
 import pickle
 from game import Board, Game
-from mcts_pure import MCTSPlayer as MCTS_Pure
+#  2,3from mcts_pure import MCTSPlayer as MCTS_Pure
+from mp_mcts import MCTSPlayer as MCTS_Pure
 from mcts_alphaZero import MCTSPlayer
 # from policy_value_net_numpy import PolicyValueNetNumpy
 # from policy_value_net import PolicyValueNet  # Theano and Lasagne
 # from policy_value_net_pytorch import PolicyValueNet  # Pytorch
 # from policy_value_net_tensorflow import PolicyValueNet # Tensorflow
 from policy_value_net_keras import PolicyValueNet  # Keras
+
+# from mp_mcts import MCTSPlayer as MCTS_Pure
 
 
 class Human(object):
@@ -73,13 +76,16 @@ def run():
                                        
         '''
         # best_policy = PolicyValueNetNumpy(width, height, policy_param)
+        '''
         best_policy = PolicyValueNet(width, height, model_file=model_file)
+        
         mcts_player = MCTSPlayer(best_policy.policy_value_fn,
                                  c_puct=5,
                                  n_playout=400)  # set larger n_playout for better performance
-
+        '''
         # uncomment the following line to play with pure MCTS (it's much weaker even with a larger n_playout)
-        mcts_player = MCTS_Pure(c_puct=5, n_playout=1000)
+        # mcts_player = MCTS_Pure(c_puct=5, n_playout=3000)
+        mcts_player = MCTS_Pure(c_puct=5, n_playout=3000)
 
         # human player, input your move in the format: 2,3
         human = Human()
