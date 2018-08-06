@@ -17,6 +17,7 @@ from mcts_alphaZero import MCTSPlayer
 # from policy_value_net_tensorflow import PolicyValueNet # Tensorflow
 from policy_value_net_keras import PolicyValueNet # Keras
 
+import os.path
 import logging
 logging.basicConfig(filename='training.log',format='%(asctime)s %(levelname)-8s %(message)s',level=logging.INFO,datefmt='%Y-%m-%d %H:%M:%S')
 
@@ -43,7 +44,7 @@ class TrainPipeline():
         self.epochs = 5  # num of train_steps for each update
         self.kl_targ = 0.02
         self.check_freq = 50
-        self.game_batch_num = 3000
+        self.game_batch_num = 2000
         self.best_win_ratio = 0.0
         # num of simulations used for the pure mcts, which is used as
         # the opponent to evaluate the trained policy
@@ -53,6 +54,7 @@ class TrainPipeline():
             self.policy_value_net = PolicyValueNet(self.board_width,
                                                    self.board_height,
                                                    model_file=init_model)
+            self.best_win_ratio = 0.6
         else:
             # start training from a new policy-value net
             self.policy_value_net = PolicyValueNet(self.board_width,
@@ -203,7 +205,11 @@ class TrainPipeline():
 
 
 if __name__ == '__main__':
-    training_pipeline = TrainPipeline()
+    if os.path.exists('./current_policy.model'):
+        training_pipeline = TrainPipeline(init_model='./current_policy.model')
+        logging.info('use existing model file')
+    else:
+        training_pipeline = TrainPipeline()
     training_pipeline.run()
 
 # todo
