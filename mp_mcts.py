@@ -9,6 +9,12 @@ import numpy as np
 import copy
 from operator import itemgetter
 
+def relu(x):
+    if x > 0:
+        return x
+    else:
+        return 0
+
 
 def rollout_policy_fn(board):
     """a coarse, fast version of policy_fn used in the rollout phase."""
@@ -56,13 +62,13 @@ class TreeNode(object):
         return max(self._children.items(),
                    key=lambda act_node: act_node[1].get_value(c_puct))
 
-    def update(self, leaf_value):
+    def update(self, leaf_value,visits_count=1):
         """Update node values from leaf evaluation.
         leaf_value: the value of subtree evaluation from the current player's
             perspective.
         """
         # Count visit.
-        self._n_visits += 1
+        self._n_visits += visits_count
         # Update Q, a running average of values for all visits.
         self._Q += 1.0*(leaf_value - self._Q) / self._n_visits
 
@@ -191,24 +197,52 @@ class MCTS(object):
             action_probs, _ = self._policy(state)
             self._root.expand(action_probs)
 
+        the_children = self._root._children
+        i = 0
+        sorted_children = sorted(the_children.items(), key=lambda act_node: act_node[1].get_value(self._c_puct))
+        for child_node in sorted_children:
+            i += 1
+            child_tree = MCTS(policy_value_fn,root=child_node[1])
+            state_copy = copy.deepcopy(state)
+            state_copy.do_move(child_node[0])
+            visits_count = 0
+            for j in range(0,relu(1200-i*20),10): # at least run one time
+                child_tree._playout(copy.deepcopy(state_copy))
+                visits_count += 1
+            self._root.update(-child_tree.get_root_node().last_leafvalue,visits_count=visits_count)  # update real root
+            child_tree.get_root_node().set_parent(self._root)  # to link the sub tree
+
+        '''
         for n in range(self._n_playout):
             # get top n (assumed to be 6) nodes from children
+            # step1 let all children of root have chance to run in parallel
+            # adjust the round count of children by value
             if n%6 == 0:
                 the_children = self._root._children
                 top_n = sorted(the_children.items(),key=lambda act_node: act_node[1].get_value(self._c_puct))[:6]
                 for child_node in top_n:
                     # child_tree = MCTS(policy_value_fn,copy.deepcopy(child_node)) # use copy because we will use it in multiprocess
                     child_tree = MCTS(policy_value_fn,
-                                      child_node)  # use copy because we will use it in multiprocess
+                                      child_node)  
                     state_copy = copy.deepcopy(state)
                     state_copy.do_move(child_node[0])
                     child_tree._playout(state_copy)
                     self._root.update(-child_tree.get_root_node().last_leafvalue) # update real root
                     child_tree.get_root_node().set_parent(self._root) # to link the sub tree
                     # self._root.get_children()[child_node[0]] = child_tree.get_root_node() # copy sub tree
+        '''
 
+        '''
         return max(self._root._children.items(),
-                   key=lambda act_node: act_node[1].get_visits())[0]
+                   # key=lambda act_node: act_node[1].get_visits())[0]
+                   key=lambda act_node: act_node[1].get_value(self._c_puct))[0]
+        '''
+
+        for n in range(300):
+            state_copy = copy.deepcopy(state)
+            self._playout(state_copy)
+        return max(self._root._children.items(),
+                   key=lambda act_node: act_node[1].get_value(self._c_puct))[0]
 
     def update_with_move(self, last_move):
         """Step forward in the tree, keeping everything we already know
@@ -224,7 +258,7 @@ class MCTS(object):
         return "MCTS"
 
 
-class MCTSPlayer(object):
+class MPlayer(object):
     """AI player based on MCTS"""
     def __init__(self, c_puct=5, n_playout=20):
         self.mcts = MCTS(policy_value_fn, c_puct, n_playout)

@@ -5,7 +5,7 @@
 
 from __future__ import print_function
 import numpy as np
-
+import time
 
 class Board(object):
     """board for the game"""
@@ -175,10 +175,14 @@ class Game(object):
         while True:
             current_player = self.board.get_current_player()
             player_in_turn = players[current_player]
+            start = time.time()
             move = player_in_turn.get_action(self.board)
+            end = time.time()
+            timeclapse = end - start
             self.board.do_move(move)
             if is_shown:
                 self.graphic(self.board, player1.player, player2.player)
+                print("player is {} and used time is {}".format(player_in_turn,timeclapse))
             end, winner = self.board.game_end()
             if end:
                 if is_shown:

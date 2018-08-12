@@ -9,8 +9,8 @@ Input your move in the format: 2,3
 from __future__ import print_function
 import pickle
 from game import Board, Game
-#  2,3from mcts_pure import MCTSPlayer as MCTS_Pure
-from mp_mcts import MCTSPlayer as MCTS_Pure
+from mcts_pure import MCTSPlayer as MCTS_Pure
+# from mp_mcts import MCTSPlayer as MCTS_Pure
 from mcts_alphaZero import MCTSPlayer
 # from policy_value_net_numpy import PolicyValueNetNumpy
 # from policy_value_net import PolicyValueNet  # Theano and Lasagne
@@ -50,10 +50,10 @@ class Human(object):
 
 
 def run():
-    # n = 5
-    n = 4
-    # width, height = 8, 8
-    width, height = 6, 6
+    n = 5
+    # n = 4
+    width, height = 8, 8
+    # width, height = 6, 6
     # model_file = 'best_policy_8_8_5.model'
     model_file = 'current_policy.model'
     try:
@@ -91,7 +91,7 @@ def run():
         human = Human()
 
         # set start_player=0 for human first
-        game.start_play(human, mcts_player, start_player=0, is_shown=1)
+        game.start_play(human, mcts_player, start_player=1, is_shown=1)
     except KeyboardInterrupt:
         print('\n\rquit')
 
