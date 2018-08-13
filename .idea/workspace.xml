@@ -2,17 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="483495cb-e89b-426d-9330-978b42f626f0" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/mp_mcts.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/mptest2.py" />
-      <change beforePath="$PROJECT_DIR$/.idea/AlphaZero_Gomoku.iml" afterPath="$PROJECT_DIR$/.idea/AlphaZero_Gomoku.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/fake_match.py" afterPath="$PROJECT_DIR$/fake_match.py" />
-      <change beforePath="$PROJECT_DIR$/game.py" afterPath="$PROJECT_DIR$/game.py" />
-      <change beforePath="$PROJECT_DIR$/human_play.py" afterPath="$PROJECT_DIR$/human_play.py" />
-      <change beforePath="$PROJECT_DIR$/mcts_pure.py" afterPath="$PROJECT_DIR$/mcts_pure.py" />
-      <change beforePath="$PROJECT_DIR$/mptest1.py" afterPath="$PROJECT_DIR$/mptest1.py" />
-      <change beforePath="$PROJECT_DIR$/random_player.py" afterPath="$PROJECT_DIR$/random_player.py" />
+      <change afterPath="$PROJECT_DIR$/mptest3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/AlphaZero_Gomoku.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/AlphaZero_Gomoku.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,25 +16,38 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/AlphaZero_Gomoku$human_play.coverage" NAME="human_play Coverage Results" MODIFIED="1533015242987" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/gomoku$mptest1.coverage" NAME="mptest1 Coverage Results" MODIFIED="1533201846690" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/AlphaZero_Gomoku$random_player.coverage" NAME="random_player Coverage Results" MODIFIED="1533116569662" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/AlphaZero_Gomoku$fake_match.coverage" NAME="fake_match Coverage Results" MODIFIED="1533119283919" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/AlphaZero_Gomoku$mptest1.coverage" NAME="mptest1 Coverage Results" MODIFIED="1533113294473" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/gomoku$mptest1.coverage" NAME="mptest1 Coverage Results" MODIFIED="1533201846690" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/AlphaZero_Gomoku$dummmain.coverage" NAME="dummmain Coverage Results" MODIFIED="1533113299073" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/AlphaZero_Gomoku$train.coverage" NAME="train Coverage Results" MODIFIED="1534152286580" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/gomoku$mcts_pure.coverage" NAME="mcts_pure Coverage Results" MODIFIED="1533377171481" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/gomoku$fake_match.coverage" NAME="fake_match Coverage Results" MODIFIED="1533377446015" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/AlphaZero_Gomoku$dummmain.coverage" NAME="dummmain Coverage Results" MODIFIED="1533113299073" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/AlphaZero_Gomoku$mptest1.coverage" NAME="mptest1 Coverage Results" MODIFIED="1533113294473" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/AlphaZero_Gomoku$train.coverage" NAME="train Coverage Results" MODIFIED="1533011149455" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/gomoku$mptest2.coverage" NAME="mptest2 Coverage Results" MODIFIED="1533366128537" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/AlphaZero_Gomoku$fake_match.coverage" NAME="fake_match Coverage Results" MODIFIED="1533119283919" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/gomoku$human_play.coverage" NAME="human_play Coverage Results" MODIFIED="1533379212557" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/AlphaZero_Gomoku$mptest3.coverage" NAME="mptest3 Coverage Results" MODIFIED="1534149066633" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/AlphaZero_Gomoku$human_play.coverage" NAME="human_play Coverage Results" MODIFIED="1533015242987" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/gomoku$mptest2.coverage" NAME="mptest2 Coverage Results" MODIFIED="1533366128537" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="train.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/train.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-62">
+              <caret line="78" column="56" lean-forward="true" selection-start-line="78" selection-start-column="56" selection-end-line="78" selection-end-column="56" />
+              <folding>
+                <element signature="e#123#160#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="human_play.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/human_play.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-197">
-              <caret line="37" column="56" lean-forward="true" selection-start-line="37" selection-start-column="56" selection-end-line="37" selection-end-column="56" />
+            <state relative-caret-position="1275">
+              <caret line="75" column="39" selection-start-line="75" selection-start-column="39" selection-end-line="75" selection-end-column="39" />
               <folding>
                 <element signature="e#110#147#0" expanded="true" />
               </folding>
@@ -51,15 +58,27 @@
       <file leaf-file-name="mptest1.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mptest1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="539">
-              <caret line="93" column="0" lean-forward="true" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="26" />
+            <state relative-caret-position="605">
+              <caret line="93" selection-start-line="93" selection-end-line="93" selection-end-column="26" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
-                <element signature="e#953#1109#0" expanded="false" />
-                <element signature="e#1128#1230#0" expanded="false" />
-                <element signature="e#1262#1276#0" expanded="false" />
-                <element signature="e#1293#1513#0" expanded="false" />
-                <element signature="e#1533#2031#0" expanded="false" />
+                <element signature="e#953#1109#0" />
+                <element signature="e#1128#1230#0" />
+                <element signature="e#1262#1276#0" />
+                <element signature="e#1293#1513#0" />
+                <element signature="e#1533#2031#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mptest3.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mptest3.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+              <folding>
+                <element signature="e#0#22#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -68,9 +87,17 @@
       <file leaf-file-name="game.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/game.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="307">
-              <caret line="87" column="26" lean-forward="true" selection-start-line="87" selection-start-column="26" selection-end-line="87" selection-end-column="26" />
-              <folding />
+            <state relative-caret-position="367">
+              <caret line="210" column="27" selection-start-line="210" selection-start-column="23" selection-end-line="210" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mcts_alphaZero.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mcts_alphaZero.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="172">
+              <caret line="184" column="8" selection-start-line="184" selection-start-column="8" selection-end-line="184" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -78,50 +105,19 @@
       <file leaf-file-name="fake_match.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fake_match.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" column="26" lean-forward="true" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="408">
+              <caret line="27" column="19" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="codecs.py" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/anaconda/envs/charmenv/lib/python3.6/codecs.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="310" column="0" lean-forward="false" selection-start-line="310" selection-start-column="0" selection-end-line="310" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mp_mcts.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="mp_mcts.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mp_mcts.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1638">
-              <caret line="204" column="51" lean-forward="true" selection-start-line="204" selection-start-column="51" selection-end-line="204" selection-end-column="51" />
+            <state relative-caret-position="3281">
+              <caret line="193" column="11" selection-start-line="193" selection-start-column="11" selection-end-line="193" selection-end-column="11" />
               <folding>
                 <element signature="e#127#145#0" expanded="true" />
-                <element signature="e#226#421#0" expanded="false" />
-                <element signature="e#1240#1567#0" expanded="false" />
-                <element signature="e#1240#1417#1" expanded="false" />
-                <element signature="e#1607#1870#0" expanded="false" />
-                <element signature="e#1607#1756#1" expanded="false" />
-                <element signature="e#1914#2323#0" expanded="false" />
-                <element signature="e#1914#2072#1" expanded="false" />
-                <element signature="e#2377#2553#0" expanded="false" />
-                <element signature="e#2596#2910#1" expanded="false" />
-                <element signature="e#3089#3205#0" expanded="false" />
-                <element signature="e#3238#3265#0" expanded="false" />
-                <element signature="e#3554#4044#1" expanded="false" />
-                <element signature="e#4455#4506#0" expanded="false" />
-                <element signature="e#4547#4754#1" expanded="false" />
-                <element signature="e#5431#6167#0" expanded="false" />
-                <element signature="e#6265#6422#1" expanded="false" />
-                <element signature="e#7954#8256#0" expanded="false" />
-                <marker date="1533379212551" expanded="false" signature="977:1161" ph="..." />
               </folding>
             </state>
           </provider>
@@ -130,28 +126,18 @@
       <file leaf-file-name="mcts_pure.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mcts_pure.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="307">
-              <caret line="199" column="48" lean-forward="true" selection-start-line="199" selection-start-column="8" selection-end-line="200" selection-end-column="65" />
+            <state relative-caret-position="2482">
+              <caret line="199" column="48" selection-start-line="199" selection-start-column="8" selection-end-line="200" selection-end-column="65" />
               <folding>
                 <element signature="e#116#134#0" expanded="true" />
-                <element signature="e#3064#3180#0" expanded="false" />
-                <element signature="e#3213#3240#0" expanded="false" />
-                <element signature="e#4079#4286#1" expanded="false" />
-                <element signature="e#4296#4531#1" expanded="false" />
-                <element signature="e#5212#6007#0" expanded="false" />
-                <element signature="e#6070#6806#0" expanded="false" />
-                <element signature="e#7297#7599#0" expanded="false" />
+                <element signature="e#3064#3180#0" />
+                <element signature="e#3213#3240#0" />
+                <element signature="e#4079#4286#1" />
+                <element signature="e#4296#4531#1" />
+                <element signature="e#5212#6007#0" />
+                <element signature="e#6070#6806#0" />
+                <element signature="e#7297#7599#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="random_player.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/random_player.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="81">
-              <caret line="10" column="19" lean-forward="false" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="19" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -159,14 +145,14 @@
       <file leaf-file-name="mptest2.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mptest2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="27" column="74" lean-forward="true" selection-start-line="27" selection-start-column="74" selection-end-line="27" selection-end-column="74" />
+            <state relative-caret-position="306">
+              <caret line="27" column="74" selection-start-line="27" selection-start-column="74" selection-end-line="27" selection-end-column="74" />
               <folding>
                 <element signature="e#249#260#0" expanded="true" />
-                <element signature="e#397#538#0" expanded="false" />
-                <element signature="e#569#721#0" expanded="false" />
-                <element signature="e#754#994#0" expanded="false" />
-                <element signature="e#1029#1369#0" expanded="false" />
+                <element signature="e#397#538#0" />
+                <element signature="e#569#721#0" />
+                <element signature="e#754#994#0" />
+                <element signature="e#1029#1369#0" />
               </folding>
             </state>
           </provider>
@@ -183,13 +169,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>fit</find>
-      <find>train_step</find>
-      <find>policy_update</find>
-      <find>play_batch_size</find>
-      <find>collect_selfplay_data</find>
-      <find>data_buffer</find>
-      <find>_loss_train_op</find>
       <find>entropy</find>
       <find>print</find>
       <find>pring</find>
@@ -213,6 +192,13 @@
       <find>get_move</find>
       <find>goin</find>
       <find>get_ac</find>
+      <find>current</find>
+      <find>best_win_ratiobest_win_ratio</find>
+      <find>best_win_ratio</find>
+      <find>coll</find>
+      <find>collect_selfplay_data</find>
+      <find>init</find>
+      <find>episode_len</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -228,15 +214,16 @@
         <option value="$PROJECT_DIR$/policy_value_net_keras.py" />
         <option value="$PROJECT_DIR$/mcts_alphaZero.py" />
         <option value="$PROJECT_DIR$/dummmain.py" />
-        <option value="$PROJECT_DIR$/train.py" />
         <option value="$PROJECT_DIR$/mptest1.py" />
         <option value="$PROJECT_DIR$/mcts_pure.py" />
         <option value="$PROJECT_DIR$/random_player.py" />
         <option value="$PROJECT_DIR$/mptest2.py" />
-        <option value="$PROJECT_DIR$/game.py" />
         <option value="$PROJECT_DIR$/fake_match.py" />
-        <option value="$PROJECT_DIR$/human_play.py" />
         <option value="$PROJECT_DIR$/mp_mcts.py" />
+        <option value="$PROJECT_DIR$/human_play.py" />
+        <option value="$PROJECT_DIR$/game.py" />
+        <option value="$PROJECT_DIR$/mptest3.py" />
+        <option value="$PROJECT_DIR$/train.py" />
       </list>
     </option>
   </component>
@@ -250,33 +237,21 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="46" />
-    <option name="y" value="45" />
-    <option name="width" value="1539" />
-    <option name="height" value="983" />
+    <option name="y" value="71" />
+    <option name="width" value="1737" />
+    <option name="height" value="961" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
-      <flattenPackages />
-      <showMembers />
-      <showModules />
-      <showLibraryContents />
-      <hideEmptyPackages />
-      <abbreviatePackageNames />
-      <autoscrollToSource />
-      <autoscrollFromSource />
-      <sortByType />
-      <manualOrder />
+    <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="gomoku" type="b2602c69:ProjectViewProjectNode" />
-              <item name="gomoku" type="462c0819:PsiDirectoryNode" />
+              <item name="AlphaZero_Gomoku" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AlphaZero_Gomoku" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -304,8 +279,9 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.human_play">
+  <component name="RunManager" selected="Python.train">
     <configuration name="fake_match" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="AlphaZero_Gomoku" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -316,8 +292,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="AlphaZero_Gomoku" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" runner="coverage.py" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/fake_match.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -325,6 +300,7 @@
       <option name="MODULE_MODE" value="false" />
     </configuration>
     <configuration name="human_play" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="AlphaZero_Gomoku" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -335,8 +311,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="AlphaZero_Gomoku" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" runner="coverage.py" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/human_play.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -344,6 +319,7 @@
       <option name="MODULE_MODE" value="false" />
     </configuration>
     <configuration name="mcts_pure" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="AlphaZero_Gomoku" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -354,34 +330,15 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="AlphaZero_Gomoku" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mcts_pure.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="mptest1" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="$USER_HOME$/anaconda/envs/charmenv/bin/python" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
+    <configuration name="mptest3" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="AlphaZero_Gomoku" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mptest1.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="mptest2" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -392,33 +349,48 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="AlphaZero_Gomoku" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mptest2.py" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mptest3.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.human_play" />
-      <item index="1" class="java.lang.String" itemvalue="Python.mptest1" />
-      <item index="2" class="java.lang.String" itemvalue="Python.fake_match" />
-      <item index="3" class="java.lang.String" itemvalue="Python.mptest2" />
-      <item index="4" class="java.lang.String" itemvalue="Python.mcts_pure" />
+    <configuration name="train" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="AlphaZero_Gomoku" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/train.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.human_play" />
+      <item itemvalue="Python.fake_match" />
+      <item itemvalue="Python.mcts_pure" />
+      <item itemvalue="Python.mptest3" />
+      <item itemvalue="Python.train" />
     </list>
     <recent_temporary>
-      <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.human_play" />
-        <item index="1" class="java.lang.String" itemvalue="Python.fake_match" />
-        <item index="2" class="java.lang.String" itemvalue="Python.mcts_pure" />
-        <item index="3" class="java.lang.String" itemvalue="Python.mptest2" />
-        <item index="4" class="java.lang.String" itemvalue="Python.mptest1" />
+      <list>
+        <item itemvalue="Python.train" />
+        <item itemvalue="Python.mptest3" />
+        <item itemvalue="Python.human_play" />
+        <item itemvalue="Python.fake_match" />
+        <item itemvalue="Python.mcts_pure" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="ShelveChangesManager" show_recycled="false">
-    <option name="remove_strategy" value="false" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -431,32 +403,42 @@
       <option name="presentableId" value="Default" />
       <updated>1532421827461</updated>
     </task>
+    <task id="LOCAL-00001" summary="load pre-trained model file when initialization">
+      <created>1533529680187</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1533529680187</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="46" y="45" width="1539" height="983" extended-state="0" />
+    <frame x="0" y="71" width="1737" height="961" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5630631" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1970608" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32992327" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39977476" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50031507" side_tool="true" weight="0.32957393" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49968493" weight="0.32957393" />
+      <window_info anchor="bottom" id="Python Console" order="7" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.42230576" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18469815" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39977476" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32992327" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -465,21 +447,21 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="load pre-trained model file when initialization" />
+    <option name="LAST_COMMIT_MESSAGE" value="load pre-trained model file when initialization" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/train.py</url>
-          <line>205</line>
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/mp_mcts.py</url>
-          <line>203</line>
+          <line>227</line>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/mp_mcts.py</url>
-          <line>242</line>
+          <line>276</line>
           <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
@@ -492,7 +474,6 @@
       </default-breakpoints>
       <option name="time" value="20" />
     </breakpoint-manager>
-    <watches-manager />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
@@ -544,10 +525,41 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/random_player.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="19" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mptest2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="27" column="74" lean-forward="true" selection-start-line="27" selection-start-column="74" selection-end-line="27" selection-end-column="74" />
+          <folding>
+            <element signature="e#249#260#0" expanded="true" />
+            <element signature="e#397#538#0" />
+            <element signature="e#569#721#0" />
+            <element signature="e#754#994#0" />
+            <element signature="e#1029#1369#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mp_mcts.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2159">
+          <caret line="204" column="51" lean-forward="true" selection-start-line="204" selection-start-column="51" selection-end-line="204" selection-end-column="51" />
+          <folding>
+            <element signature="e#127#145#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/human_play.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1080">
-          <caret line="81" column="0" lean-forward="false" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
+          <caret line="81" selection-start-line="81" selection-end-line="81" />
           <folding>
             <element signature="e#110#147#0" expanded="true" />
           </folding>
@@ -557,7 +569,7 @@
     <entry file="file://$PROJECT_DIR$/train.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="915">
-          <caret line="61" column="12" lean-forward="false" selection-start-line="61" selection-start-column="12" selection-end-line="61" selection-end-column="12" />
+          <caret line="61" column="12" selection-start-line="61" selection-start-column="12" selection-end-line="61" selection-end-column="12" />
           <folding>
             <element signature="e#123#160#0" expanded="true" />
           </folding>
@@ -567,9 +579,14 @@
     <entry file="file://$PROJECT_DIR$/mptest1.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="19" column="42" lean-forward="false" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
+          <caret line="19" column="42" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
+            <element signature="e#953#1109#0" />
+            <element signature="e#1128#1230#0" />
+            <element signature="e#1262#1276#0" />
+            <element signature="e#1293#1513#0" />
+            <element signature="e#1533#2031#0" />
           </folding>
         </state>
       </provider>
@@ -577,26 +594,21 @@
     <entry file="file://$PROJECT_DIR$/dummmain.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
-          <caret line="2" column="6" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="26" />
-          <folding />
+          <caret line="2" column="6" selection-start-line="2" selection-end-line="2" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/game.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2400">
-          <caret line="161" column="8" lean-forward="false" selection-start-line="161" selection-start-column="8" selection-end-line="161" selection-end-column="8" />
-          <folding />
+          <caret line="161" column="8" selection-start-line="161" selection-start-column="8" selection-end-line="161" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/fake_match.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
-          <caret line="23" column="26" lean-forward="false" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
+          <caret line="23" column="26" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -604,7 +616,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="9" column="27" lean-forward="true" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -614,13 +625,13 @@
           <caret line="194" column="42" lean-forward="true" selection-start-line="194" selection-start-column="42" selection-end-line="194" selection-end-column="42" />
           <folding>
             <element signature="e#116#134#0" expanded="true" />
-            <element signature="e#3064#3180#0" expanded="false" />
-            <element signature="e#3213#3240#0" expanded="false" />
-            <element signature="e#4079#4286#1" expanded="false" />
-            <element signature="e#4296#4531#1" expanded="false" />
-            <element signature="e#5212#6007#0" expanded="false" />
-            <element signature="e#6070#6806#0" expanded="false" />
-            <element signature="e#7297#7599#0" expanded="false" />
+            <element signature="e#3064#3180#0" />
+            <element signature="e#3213#3240#0" />
+            <element signature="e#4079#4286#1" />
+            <element signature="e#4296#4531#1" />
+            <element signature="e#5212#6007#0" />
+            <element signature="e#6070#6806#0" />
+            <element signature="e#7297#7599#0" />
           </folding>
         </state>
       </provider>
@@ -628,7 +639,7 @@
     <entry file="file://$PROJECT_DIR$/train.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1309">
-          <caret line="87" column="50" lean-forward="false" selection-start-line="87" selection-start-column="42" selection-end-line="87" selection-end-column="57" />
+          <caret line="87" column="50" selection-start-line="87" selection-start-column="42" selection-end-line="87" selection-end-column="57" />
           <folding>
             <element signature="e#123#160#0" expanded="true" />
           </folding>
@@ -638,16 +649,16 @@
     <entry file="file://$PROJECT_DIR$/game.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3332">
-          <caret line="197" column="43" lean-forward="false" selection-start-line="197" selection-start-column="38" selection-end-line="197" selection-end-column="48" />
+          <caret line="197" column="43" selection-start-line="197" selection-start-column="38" selection-end-line="197" selection-end-column="48" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/policy_value_net_keras.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1224">
-          <caret line="87" column="32" lean-forward="false" selection-start-line="87" selection-start-column="32" selection-end-line="87" selection-end-column="32" />
+          <caret line="87" column="32" selection-start-line="87" selection-start-column="32" selection-end-line="87" selection-end-column="32" />
           <folding>
-            <element signature="e#170#207#0" expanded="false" />
+            <element signature="e#170#207#0" />
           </folding>
         </state>
       </provider>
@@ -655,14 +666,14 @@
     <entry file="file://$PROJECT_DIR$/mcts_alphaZero.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1768">
-          <caret line="105" column="8" lean-forward="false" selection-start-line="105" selection-start-column="8" selection-end-line="105" selection-end-column="8" />
+          <caret line="105" column="8" selection-start-line="105" selection-start-column="8" selection-end-line="105" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/policy_value_net_tensorflow.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2176">
-          <caret line="129" column="18" lean-forward="false" selection-start-line="129" selection-start-column="8" selection-end-line="129" selection-end-column="18" />
+          <caret line="129" column="18" selection-start-line="129" selection-start-column="8" selection-end-line="129" selection-end-column="18" />
         </state>
       </provider>
     </entry>
@@ -670,14 +681,14 @@
     <entry file="file://$PROJECT_DIR$/mcts_pure.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="884">
-          <caret line="54" column="16" lean-forward="false" selection-start-line="54" selection-start-column="15" selection-end-line="54" selection-end-column="18" />
+          <caret line="54" column="16" selection-start-line="54" selection-start-column="15" selection-end-line="54" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/train.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1309">
-          <caret line="87" column="50" lean-forward="false" selection-start-line="87" selection-start-column="42" selection-end-line="87" selection-end-column="57" />
+          <caret line="87" column="50" selection-start-line="87" selection-start-column="42" selection-end-line="87" selection-end-column="57" />
           <folding>
             <element signature="e#123#160#0" expanded="true" />
           </folding>
@@ -687,7 +698,7 @@
     <entry file="file://$PROJECT_DIR$/game.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3332">
-          <caret line="197" column="43" lean-forward="false" selection-start-line="197" selection-start-column="38" selection-end-line="197" selection-end-column="48" />
+          <caret line="197" column="43" selection-start-line="197" selection-start-column="38" selection-end-line="197" selection-end-column="48" />
         </state>
       </provider>
     </entry>
@@ -701,14 +712,14 @@
     <entry file="file://$PROJECT_DIR$/mcts_alphaZero.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1768">
-          <caret line="105" column="8" lean-forward="false" selection-start-line="105" selection-start-column="8" selection-end-line="105" selection-end-column="8" />
+          <caret line="105" column="8" selection-start-line="105" selection-start-column="8" selection-end-line="105" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/policy_value_net_tensorflow.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2176">
-          <caret line="129" column="18" lean-forward="false" selection-start-line="129" selection-start-column="8" selection-end-line="129" selection-end-column="18" />
+          <caret line="129" column="18" selection-start-line="129" selection-start-column="8" selection-end-line="129" selection-end-column="18" />
         </state>
       </provider>
     </entry>
@@ -722,16 +733,12 @@
     <entry file="file://$USER_HOME$/AppData/Local/conda/conda/envs/whd/Lib/site-packages/keras/layers/convolutional.py" />
     <entry file="file://$PROJECT_DIR$/policy_value_net_numpy.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1260">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
+        <state relative-caret-position="-1260" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/policy_value_net_pytorch.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1326">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
+        <state relative-caret-position="-1326" />
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/.PyCharm2018.1/system/python_stubs/-1755560008/builtins.py" />
@@ -741,7 +748,7 @@
     <entry file="file://$PROJECT_DIR$/policy_value_net_tensorflow.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="123">
-          <caret line="74" column="80" lean-forward="false" selection-start-line="74" selection-start-column="80" selection-end-line="74" selection-end-column="80" />
+          <caret line="74" column="80" selection-start-line="74" selection-start-column="80" selection-end-line="74" selection-end-column="80" />
         </state>
       </provider>
     </entry>
@@ -750,22 +757,12 @@
     <entry file="file://$USER_HOME$/AppData/Local/conda/conda/envs/whd/Lib/site-packages/keras/models.py" />
     <entry file="file://$USER_HOME$/.PyCharm2018.1/system/python_stubs/-1755560008/numpy/random/mtrand.py" />
     <entry file="file://$USER_HOME$/AppData/Local/conda/conda/envs/whd/Lib/site-packages/keras/layers/core.py" />
-    <entry file="file://$PROJECT_DIR$/train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="61" column="12" lean-forward="false" selection-start-line="61" selection-start-column="12" selection-end-line="61" selection-end-column="12" />
-          <folding>
-            <element signature="e#123#160#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/policy_value_net_keras.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="512">
           <caret line="65" column="53" lean-forward="true" selection-start-line="65" selection-start-column="53" selection-end-line="65" selection-end-column="53" />
           <folding>
-            <element signature="e#170#207#0" expanded="false" />
+            <element signature="e#170#207#0" />
           </folding>
         </state>
       </provider>
@@ -773,133 +770,121 @@
     <entry file="file://$PROJECT_DIR$/dummmain.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
-          <caret line="3" column="18" lean-forward="false" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mptest1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="539">
-          <caret line="93" column="0" lean-forward="true" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-            <element signature="e#953#1109#0" expanded="false" />
-            <element signature="e#1128#1230#0" expanded="false" />
-            <element signature="e#1262#1276#0" expanded="false" />
-            <element signature="e#1293#1513#0" expanded="false" />
-            <element signature="e#1533#2031#0" expanded="false" />
-          </folding>
+          <caret line="3" column="18" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/random_player.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="10" column="19" lean-forward="false" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="19" />
-          <folding />
+        <state relative-caret-position="170">
+          <caret line="10" column="19" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/anaconda/envs/charmenv/lib/python3.6/codecs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="310" column="0" lean-forward="false" selection-start-line="310" selection-start-column="0" selection-end-line="310" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mcts_alphaZero.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="138" column="14" lean-forward="false" selection-start-line="138" selection-start-column="8" selection-end-line="138" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/anaconda/envs/charmenv/lib/python3.6/codecs.py" />
     <entry file="file://$PROJECT_DIR$/mcts_pure.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="199" column="48" lean-forward="true" selection-start-line="199" selection-start-column="8" selection-end-line="200" selection-end-column="65" />
+        <state relative-caret-position="2482">
+          <caret line="199" column="48" selection-start-line="199" selection-start-column="8" selection-end-line="200" selection-end-column="65" />
           <folding>
             <element signature="e#116#134#0" expanded="true" />
-            <element signature="e#3064#3180#0" expanded="false" />
-            <element signature="e#3213#3240#0" expanded="false" />
-            <element signature="e#4079#4286#1" expanded="false" />
-            <element signature="e#4296#4531#1" expanded="false" />
-            <element signature="e#5212#6007#0" expanded="false" />
-            <element signature="e#6070#6806#0" expanded="false" />
-            <element signature="e#7297#7599#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/game.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="87" column="26" lean-forward="true" selection-start-line="87" selection-start-column="26" selection-end-line="87" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fake_match.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="26" lean-forward="true" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#3064#3180#0" />
+            <element signature="e#3213#3240#0" />
+            <element signature="e#4079#4286#1" />
+            <element signature="e#4296#4531#1" />
+            <element signature="e#5212#6007#0" />
+            <element signature="e#6070#6806#0" />
+            <element signature="e#7297#7599#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mptest2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="27" column="74" lean-forward="true" selection-start-line="27" selection-start-column="74" selection-end-line="27" selection-end-column="74" />
+        <state relative-caret-position="306">
+          <caret line="27" column="74" selection-start-line="27" selection-start-column="74" selection-end-line="27" selection-end-column="74" />
           <folding>
             <element signature="e#249#260#0" expanded="true" />
-            <element signature="e#397#538#0" expanded="false" />
-            <element signature="e#569#721#0" expanded="false" />
-            <element signature="e#754#994#0" expanded="false" />
-            <element signature="e#1029#1369#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/human_play.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-197">
-          <caret line="37" column="56" lean-forward="true" selection-start-line="37" selection-start-column="56" selection-end-line="37" selection-end-column="56" />
-          <folding>
-            <element signature="e#110#147#0" expanded="true" />
+            <element signature="e#397#538#0" />
+            <element signature="e#569#721#0" />
+            <element signature="e#754#994#0" />
+            <element signature="e#1029#1369#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mp_mcts.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1638">
-          <caret line="204" column="51" lean-forward="true" selection-start-line="204" selection-start-column="51" selection-end-line="204" selection-end-column="51" />
+        <state relative-caret-position="3281">
+          <caret line="193" column="11" selection-start-line="193" selection-start-column="11" selection-end-line="193" selection-end-column="11" />
           <folding>
             <element signature="e#127#145#0" expanded="true" />
-            <element signature="e#226#421#0" expanded="false" />
-            <element signature="e#1240#1567#0" expanded="false" />
-            <element signature="e#1240#1417#1" expanded="false" />
-            <element signature="e#1607#1870#0" expanded="false" />
-            <element signature="e#1607#1756#1" expanded="false" />
-            <element signature="e#1914#2323#0" expanded="false" />
-            <element signature="e#1914#2072#1" expanded="false" />
-            <element signature="e#2377#2553#0" expanded="false" />
-            <element signature="e#2596#2910#1" expanded="false" />
-            <element signature="e#3089#3205#0" expanded="false" />
-            <element signature="e#3238#3265#0" expanded="false" />
-            <element signature="e#3554#4044#1" expanded="false" />
-            <element signature="e#4455#4506#0" expanded="false" />
-            <element signature="e#4547#4754#1" expanded="false" />
-            <element signature="e#5431#6167#0" expanded="false" />
-            <element signature="e#6265#6422#1" expanded="false" />
-            <element signature="e#7954#8256#0" expanded="false" />
-            <marker date="1533379212551" expanded="false" signature="977:1161" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/human_play.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1275">
+          <caret line="75" column="39" selection-start-line="75" selection-start-column="39" selection-end-line="75" selection-end-column="39" />
+          <folding>
+            <element signature="e#110#147#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fake_match.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="27" column="19" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mptest1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="605">
+          <caret line="93" selection-start-line="93" selection-end-line="93" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+            <element signature="e#953#1109#0" />
+            <element signature="e#1128#1230#0" />
+            <element signature="e#1262#1276#0" />
+            <element signature="e#1293#1513#0" />
+            <element signature="e#1533#2031#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mptest3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mcts_alphaZero.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="184" column="8" selection-start-line="184" selection-start-column="8" selection-end-line="184" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/game.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="367">
+          <caret line="210" column="27" selection-start-line="210" selection-start-column="23" selection-end-line="210" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-62">
+          <caret line="78" column="56" lean-forward="true" selection-start-line="78" selection-start-column="56" selection-end-line="78" selection-end-column="56" />
+          <folding>
+            <element signature="e#123#160#0" expanded="true" />
           </folding>
         </state>
       </provider>

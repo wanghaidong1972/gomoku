@@ -17,12 +17,23 @@ from mcts_alphaZero import MCTSPlayer
 # from policy_value_net_tensorflow import PolicyValueNet # Tensorflow
 from policy_value_net_keras import PolicyValueNet # Keras
 
+import multiprocessing
+from multiprocessing.pool import Pool
+
+import copy
 import os.path
 import logging
 logging.basicConfig(filename='training.log',format='%(asctime)s %(levelname)-8s %(message)s',level=logging.INFO,datefmt='%Y-%m-%d %H:%M:%S')
 
 class TrainPipeline():
     def __init__(self, init_model=None):
+        #cpu count
+        self.n_workers = multiprocessing.cpu_count() -1
+        self.worker_pool = None
+
+        #
+        self.episode_len = -1
+
         # params of the board and the game
         self.board_width = 8
         self.board_height = 8
@@ -86,16 +97,45 @@ class TrainPipeline():
                                     winner))
         return extend_data
 
-    def collect_selfplay_data(self, n_games=1):
+    def single_game_play(self):
+        game = copy.deepcopy(self.game)
+        player = copy.deepcopy(self.mcts_player)
+        winner, play_data = game.start_self_play(player,temp=self.temp)
+        return winner, play_data
+
+    def collect_selfplay_data(self, n_games=3):
         """collect self-play data for training"""
-        for i in range(n_games):
-            winner, play_data = self.game.start_self_play(self.mcts_player,
-                                                          temp=self.temp)
-            play_data = list(play_data)[:]
-            self.episode_len = len(play_data)
-            # augment the data
-            play_data = self.get_equi_data(play_data)
-            self.data_buffer.extend(play_data)
+        if self.worker_pool is None:
+            self.worker_pool = Pool(processes=self.n_workers)
+
+        incoming = []  # queue for result to process
+        ongoing = []  # queue for running job
+
+        i = 0
+        while i < n_games:
+
+            if len(ongoing) >= self.n_workers:
+                # Too many playouts running? will not happen in our simple case
+                # ongoing[0][0].wait(0.01 / n_workers)
+                pass
+            else:
+                i += 1
+                ongoing.append(self.worker_pool.apply_async(self.single_game_play))
+
+            while incoming:
+                winner, play_data = incoming.pop()
+                play_data = list(play_data)[:]
+                self.episode_len = len(play_data)
+                # augment the data
+                play_data = self.get_equi_data(play_data)
+                self.data_buffer.extend(play_data)
+
+            for job in ongoing:
+                if not job.ready():
+                    continue
+                winner, play_data = job.get()
+                incoming.append((winner, play_data))
+                ongoing.remove(job)
 
     def policy_update(self):
         """update the policy-value net"""
