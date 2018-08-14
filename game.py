@@ -6,6 +6,7 @@
 from __future__ import print_function
 import numpy as np
 import time
+from mcts_pure import MCTSPlayer as MCTS_Pure
 
 class Board(object):
     """board for the game"""
@@ -200,7 +201,11 @@ class Game(object):
         p1, p2 = self.board.players
         states, mcts_probs, current_players = [], [], []
         while True:
-            move, move_probs = player.get_action(self.board,
+            if isinstance(player,MCTS_Pure):
+                move = player.get_action(self.board)
+                move_probs = np.ones(len(self.board.availables)) / len(self.board.availables)
+            else:
+                move, move_probs = player.get_action(self.board,
                                                  temp=temp,
                                                  return_prob=1)
             # store the data

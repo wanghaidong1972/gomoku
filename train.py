@@ -19,11 +19,21 @@ from policy_value_net_keras import PolicyValueNet # Keras
 
 import multiprocessing
 from multiprocessing.pool import Pool
+import time
 
 import copy
 import os.path
 import logging
 logging.basicConfig(filename='training.log',format='%(asctime)s %(levelname)-8s %(message)s',level=logging.INFO,datefmt='%Y-%m-%d %H:%M:%S')
+
+
+def single_game_play():
+    board = Board(width=8,height=8,n_in_row=5)
+    game = Game(board)
+    temp = 1.0
+    player = MCTS_Pure()
+    winner, play_data = game.start_self_play(player, temp=temp)
+    return winner, play_data
 
 class TrainPipeline():
     def __init__(self, init_model=None):
@@ -49,7 +59,7 @@ class TrainPipeline():
         self.n_playout = 400  # num of simulations for each move
         self.c_puct = 5
         self.buffer_size = 12000
-        self.batch_size = 512  # mini-batch size for training
+        self.batch_size = 2048  # mini-batch size for training
         self.data_buffer = deque(maxlen=self.buffer_size)
         self.play_batch_size = 1
         self.epochs = 5  # num of train_steps for each update
@@ -60,6 +70,8 @@ class TrainPipeline():
         # num of simulations used for the pure mcts, which is used as
         # the opponent to evaluate the trained policy
         self.pure_mcts_playout_num = 1000
+        self.batch_i = 0
+
         if init_model:
             # start training from an initial policy-value net
             self.policy_value_net = PolicyValueNet(self.board_width,
@@ -97,45 +109,18 @@ class TrainPipeline():
                                     winner))
         return extend_data
 
-    def single_game_play(self):
-        game = copy.deepcopy(self.game)
-        player = copy.deepcopy(self.mcts_player)
-        winner, play_data = game.start_self_play(player,temp=self.temp)
-        return winner, play_data
-
-    def collect_selfplay_data(self, n_games=3):
+    def collect_selfplay_data(self, n_games=1):
         """collect self-play data for training"""
-        if self.worker_pool is None:
-            self.worker_pool = Pool(processes=self.n_workers)
-
-        incoming = []  # queue for result to process
-        ongoing = []  # queue for running job
-
-        i = 0
-        while i < n_games:
-
-            if len(ongoing) >= self.n_workers:
-                # Too many playouts running? will not happen in our simple case
-                # ongoing[0][0].wait(0.01 / n_workers)
-                pass
-            else:
-                i += 1
-                ongoing.append(self.worker_pool.apply_async(self.single_game_play))
-
-            while incoming:
-                winner, play_data = incoming.pop()
-                play_data = list(play_data)[:]
-                self.episode_len = len(play_data)
-                # augment the data
-                play_data = self.get_equi_data(play_data)
-                self.data_buffer.extend(play_data)
-
-            for job in ongoing:
-                if not job.ready():
-                    continue
-                winner, play_data = job.get()
-                incoming.append((winner, play_data))
-                ongoing.remove(job)
+        for i in range(n_games):
+            winner, play_data = self.game.start_self_play(self.mcts_player,
+                                                          temp=self.temp)
+            play_data = list(play_data)[:]
+            self.episode_len = len(play_data)
+            print("batch i:{}, episode_len:{}".format(self.batch_i + 1, self.episode_len))
+            logging.info("batch i:{}, episode_len:{}".format(self.batch_i + 1, self.episode_len))
+            # augment the data
+            play_data = self.get_equi_data(play_data)
+            self.data_buffer.extend(play_data)
 
     def policy_update(self):
         """update the policy-value net"""
@@ -215,11 +200,10 @@ class TrainPipeline():
         """run the training pipeline"""
         try:
             for i in range(self.game_batch_num):
+                self.batch_i = i
                 self.collect_selfplay_data(self.play_batch_size)
-                print("batch i:{}, episode_len:{}".format(
-                        i+1, self.episode_len))
-                logging.info("batch i:{}, episode_len:{}".format(
-                    i + 1, self.episode_len))
+                # print("batch i:{}, episode_len:{}".format(i+1, self.episode_len))
+                # logging.info("batch i:{}, episode_len:{}".format(i + 1, self.episode_len))
                 if len(self.data_buffer) > self.batch_size:
                     loss, entropy = self.policy_update()
                 # check the performance of the current model,
