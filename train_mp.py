@@ -33,7 +33,7 @@ play_batch_size = 9
 epochs = 5  # num of train_steps for each update
 kl_targ = 0.02
 check_freq = 50
-game_batch_num = 160
+game_batch_num = 50
 best_win_ratio = 0.0
 # num of simulations used for the pure mcts, which is used as  the opponent to evaluate the trained policy
 pure_mcts_playout_num = 1000
@@ -195,7 +195,7 @@ def policy_evaluate( n_games=10):
     return win_ratio
 
 def do_run():
-    global win_ratio,pure_mcts_playout_num
+    global win_ratio,best_win_ratio,pure_mcts_playout_num
 
     try:
         for i in range(game_batch_num):
