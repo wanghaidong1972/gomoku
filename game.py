@@ -7,6 +7,7 @@ from __future__ import print_function
 import numpy as np
 import time
 from mcts_pure import MCTSPlayer as MCTS_Pure
+import pickle
 
 class Board(object):
     """board for the game"""
@@ -21,6 +22,7 @@ class Board(object):
         # need how many pieces in a row to win
         self.n_in_row = int(kwargs.get('n_in_row', 5))
         self.players = [1, 2]  # player1 and player2
+
 
     def init_board(self, start_player=0):
         if self.width < self.n_in_row or self.height < self.n_in_row:
@@ -136,6 +138,8 @@ class Game(object):
 
     def __init__(self, board, **kwargs):
         self.board = board
+        self._boardSize = self.board.width * self.board.height
+        self._pre_loaded_data = None
 
     def graphic(self, board, player1, player2):
         """Draw the board and show game info"""
@@ -231,3 +235,62 @@ class Game(object):
                     else:
                         print("Game end. Tie")
                 return winner, zip(states, mcts_probs, winners_z)
+
+    def load_predata(self, game_count=10, datafile=None):
+        import random
+        if self._pre_loaded_data:
+            print("using preloaded data")
+            return random.sample(self._pre_loaded_data, game_count)
+        else:
+            print("load from pickle")
+            with open('entry.pickle', 'rb') as fr:
+                games_data = pickle.load(fr)
+                pre_datas = []
+                for game_data in games_data:
+                    predata = self.load_one_game(game_data)
+                    pre_datas.append(predata)
+
+                self._pre_loaded_data = pre_datas
+                return random.sample(pre_datas, game_count)
+
+    def load_one_game(self, game_data=None):
+        data_length = len(game_data['seq_num_list'])  # 对弈长度（一盘棋盘数据的长度）
+        self.board.init_board()
+        p1, p2 = self.board.players
+        states, mcts_probs, current_players = [], [], []
+        for num_index, move in enumerate(game_data['seq_num_list']):
+            probs = [0.000001 for _ in range(self._boardSize)]
+            probs[move] = 0.99999
+            move_probs = np.asarray(probs)
+            states.append(self.board.current_state())
+            mcts_probs.append(move_probs)
+            current_players.append(self.board.current_player)
+            # perform a move
+            try:
+                self.board.do_move(move)
+            except Exception as ee:
+                warning, winner, mcts_probs = 1, None, None
+                return warning, winner, mcts_probs
+
+            end = 0
+            if num_index + 1 == data_length:
+                end = 1
+                winner = game_data['winner']
+
+            if end:
+                # winner from the perspective of the current player of each state
+                winners_z = np.zeros(len(current_players))
+                if winner != -1:
+                    winners_z[np.array(current_players) == winner] = 1.0
+                    winners_z[np.array(current_players) != winner] = -1.0
+
+                return  winner, zip(states, mcts_probs, winners_z)
+
+
+if __name__ == '__main__':
+    board = Board(width=15, height=15,n_in_row=5)
+    game = Game(board)
+
+    contents = game.load_predata()
+
+    print(contents[100])

@@ -45,8 +45,8 @@ class TrainPipeline():
         self.episode_len = -1
 
         # params of the board and the game
-        self.board_width = 8
-        self.board_height = 8
+        self.board_width = 15
+        self.board_height = 15
         self.n_in_row = 5
         self.board = Board(width=self.board_width,
                            height=self.board_height,
@@ -61,11 +61,13 @@ class TrainPipeline():
         self.buffer_size = 12000
         self.batch_size = 2048  # mini-batch size for training
         self.data_buffer = deque(maxlen=self.buffer_size)
-        self.play_batch_size = 1
+        self.play_batch_size = 2
+        self.pre_data_size = 10
         self.epochs = 5  # num of train_steps for each update
         self.kl_targ = 0.02
-        self.check_freq = 50
-        self.game_batch_num = 2000
+        # self.check_freq = 50
+        self.check_freq = 10 # when use predfined data
+        self.game_batch_num = 300
         self.best_win_ratio = 0.0
         # num of simulations used for the pure mcts, which is used as
         # the opponent to evaluate the trained policy
@@ -118,6 +120,27 @@ class TrainPipeline():
             self.episode_len = len(play_data)
             print("batch i:{}, episode_len:{}".format(self.batch_i + 1, self.episode_len))
             logging.info("batch i:{}, episode_len:{}".format(self.batch_i + 1, self.episode_len))
+            # augment the data
+            play_data = self.get_equi_data(play_data)
+            self.data_buffer.extend(play_data)
+
+    def collect_pre_data(self, n_games=10):
+        """collect self-play data for training"""
+        contents = self.game.load_predata(game_count=n_games)
+
+        i = 0
+        for content in contents:
+            i = i+1
+            try:
+                winner, play_data = content
+            except Exception as e:
+                print(e)
+                continue # just ignore this line
+
+            play_data = list(play_data)[:]
+            self.episode_len = len(play_data)
+            print("load data i:{}, episode_len:{}".format(i, self.episode_len))
+            logging.info("load data i:{}, episode_len:{}".format(i + 1, self.episode_len))
             # augment the data
             play_data = self.get_equi_data(play_data)
             self.data_buffer.extend(play_data)
@@ -201,8 +224,12 @@ class TrainPipeline():
         try:
             for i in range(self.game_batch_num):
                 self.batch_i = i
-                self.collect_selfplay_data(self.play_batch_size)
+                self.collect_pre_data(self.pre_data_size)
+                self.collect_selfplay_data(self.play_batch_size) # use self play as well
+
                 # print("batch i:{}, episode_len:{}".format(i+1, self.episode_len))
+                print("batch i:{} is training".format(i+1))
+                logging.info("batch i:{} is training".format(i + 1))
                 # logging.info("batch i:{}, episode_len:{}".format(i + 1, self.episode_len))
                 if len(self.data_buffer) > self.batch_size:
                     loss, entropy = self.policy_update()
@@ -231,8 +258,11 @@ class TrainPipeline():
 if __name__ == '__main__':
     if os.path.exists('./current_policy.model'):
         training_pipeline = TrainPipeline(init_model='./current_policy.model')
+        print('use existing model file')
         logging.info('use existing model file')
     else:
+        print('train from 0')
+        logging.info('train from 0')
         training_pipeline = TrainPipeline()
     training_pipeline.run()
 
