@@ -14,6 +14,7 @@ from keras.layers.convolutional import Conv2D
 from keras.layers.core import Activation, Dense, Flatten
 from keras.layers.merge import Add
 from keras.layers import merge
+import keras.layers
 from keras.layers.normalization import BatchNormalization
 from keras.regularizers import l2
 from keras.optimizers import Adam
@@ -37,11 +38,70 @@ class PolicyValueNet():
             #   self.model.set_weights(net_params)
             self.model = load_model(model_file)
         else:
-            self.create_policy_value_net()
+            # self.create_policy_value_net()
+            self.create_policy_value_resnet()
         self._loss_train_op()
 
-        # self.policy_value = self.policy_value()
-        
+    def create_policy_value_resnet(self):
+        def _conv_bn_relu(filters=128,kernel_size=(3,3)):
+            def f(input):
+                conv = Conv2D( kernel_size=kernel_size, filters=filters, padding="same",data_format="channels_first",
+                               kernel_regularizer=l2(self.l2_const) )(input)
+                norm = BatchNormalization(axis=1)(conv)
+                return Activation("relu")(norm)
+
+            return f
+
+        def _conv_bn(filters=128,kernel_size=(3,3)):
+            def f(input):
+                conv = Conv2D(kernel_size=kernel_size, filters=filters, padding="same", data_format="channels_first",
+                              kernel_regularizer=l2(self.l2_const))(input)
+                norm = BatchNormalization(axis=1)(conv)
+                return norm
+
+            return f
+
+        def _basic_block( nb_filters):
+            def f(input):
+                conv1 = _conv_bn_relu(nb_filters, (3,3))(input)
+                conv2 = _conv_bn(nb_filters, (3,3))(conv1)
+                shortcut = keras.layers.add([conv1, conv2])
+                return  Activation("relu")(shortcut)
+
+            return f
+
+        in_x = network = Input((4, self.board_width, self.board_height))
+
+        network = _basic_block(64)(network)
+        network = _basic_block(128)(network)
+
+        '''
+        layer1 = Conv2D(filters=64, kernel_size=(3, 3), padding="same", data_format="channels_first",
+                         activation="relu", kernel_regularizer=l2(self.l2_const))(network)
+        layer2 = Conv2D(filters=64, kernel_size=(3, 3), padding="same", data_format="channels_first",
+                         activation="relu", kernel_regularizer=l2(self.l2_const))(layer1)
+        network = Conv2D(filters=128, kernel_size=(3, 3), padding="same", data_format="channels_first",
+                         activation="relu", kernel_regularizer=l2(self.l2_const))(network)
+        '''
+
+        # action policy layers
+        policy_net = Conv2D(filters=4, kernel_size=(1, 1), data_format="channels_first", activation="relu", kernel_regularizer=l2(self.l2_const))(network)
+        policy_net = Flatten()(policy_net)
+        self.policy_net = Dense(self.board_width*self.board_height, activation="softmax", kernel_regularizer=l2(self.l2_const))(policy_net)
+        # state value layers
+        value_net = Conv2D(filters=2, kernel_size=(1, 1), data_format="channels_first", activation="relu", kernel_regularizer=l2(self.l2_const))(network)
+        value_net = Flatten()(value_net)
+        value_net = Dense(64, kernel_regularizer=l2(self.l2_const))(value_net)
+        self.value_net = Dense(1, activation="tanh", kernel_regularizer=l2(self.l2_const))(value_net)
+
+        self.model = Model(in_x, [self.policy_net, self.value_net])
+
+        def policy_value(state_input):
+            state_input_union = np.array(state_input)
+            results = self.model.predict_on_batch(state_input_union)
+            return results
+        self.policy_value = policy_value
+
     def create_policy_value_net(self):
         """create the policy value network """   
         in_x = network = Input((4, self.board_width, self.board_height))
@@ -79,11 +139,6 @@ class PolicyValueNet():
             return results
         self.policy_value = policy_value
         '''
-
-    def policy_value(self,state_input):
-        state_input_union = np.array(state_input)
-        results = self.model.predict_on_batch(state_input_union)
-        return results
 
     def policy_value_fn(self, board):
         """
@@ -134,32 +189,8 @@ class PolicyValueNet():
         # self.model.save_weights(model_file)
         self.model.save(model_file)
 
-    def _conv_bn_relu(self,nb_filter, nb_row, nb_col, subsample=(1, 1)):
-        def f(input):
-            conv = self.Convolution2D(nb_filter=nb_filter, nb_row=nb_row, nb_col=nb_col, subsample=subsample,
-                                 init="he_normal", border_mode="same")(input)
-            norm = BatchNormalization(mode=0, axis=1)(conv)
-            return Activation("relu")(norm)
 
-        return f
-
-    def _bn_relu_conv(self,nb_filter, nb_row, nb_col, subsample=(1, 1)):
-        def f(input):
-            norm = BatchNormalization(mode=0, axis=1)(input)
-            activation = Activation("relu")(norm)
-            return self.Convolution2D(nb_filter=nb_filter, nb_row=nb_row, nb_col=nb_col, subsample=subsample,
-                                 init="he_normal", border_mode="same")(activation)
-
-        return f
-
-    def _basic_block(self,nb_filters, init_subsample=(1, 1)):
-        def f(input):
-            conv1 = self._bn_relu_conv(nb_filters, 3, 3, subsample=init_subsample)(input)
-            residual = self._bn_relu_conv(nb_filters, 3, 3)(conv1)
-            return self._shortcut(input, residual)
-
-        return f
-
+    @staticmethod
     def _shortcut(self,input, residual):
         stride_width = input._keras_shape[2] / residual._keras_shape[2]
         stride_height = input._keras_shape[3] / residual._keras_shape[3]
@@ -167,12 +198,13 @@ class PolicyValueNet():
 
         shortcut = input
         if stride_width > 1 or stride_height > 1 or not equal_channels:
-            shortcut = self.Convolution2D(nb_filter=residual._keras_shape[1], nb_row=1, nb_col=1,
+            shortcut = Conv2D(nb_filter=residual._keras_shape[1], nb_row=1, nb_col=1,
                                      subsample=(stride_width, stride_height),
                                      init="he_normal", border_mode="valid")(input)
 
         return merge([shortcut, residual], mode="sum")
 
+    @staticmethod
     def _residual_block(self,block_function, nb_filters, repetations, is_first_layer=False):
         def f(input):
             for i in range(repetations):
@@ -185,10 +217,12 @@ class PolicyValueNet():
         return f
 
     def resnet(self):
+        from keras.layers.convolutional import MaxPooling2D,AveragePooling2D
+
         input = Input(shape=(3, 224, 224))
 
         conv1 = self._conv_bn_relu(nb_filter=64, nb_row=7, nb_col=7, subsample=(2, 2))(input)
-        pool1 = self.MaxPooling2D(pool_size=(3, 3), strides=(2, 2), border_mode="same")(conv1)
+        pool1 = MaxPooling2D(pool_size=(3, 3), strides=(2, 2), border_mode="same")(conv1)
 
         # Build residual blocks..
         block_fn = self._basic_block
@@ -198,7 +232,7 @@ class PolicyValueNet():
         block4 = self._residual_block(block_fn, nb_filters=512, repetations=3)(block3)
 
         # Classifier block
-        pool2 = self.AveragePooling2D(pool_size=(7, 7), strides=(1, 1), border_mode="same")(block4)
+        pool2 = AveragePooling2D(pool_size=(7, 7), strides=(1, 1), border_mode="same")(block4)
         flatten1 = Flatten()(pool2)
         dense = Dense(output_dim=1000, init="he_normal", activation="softmax")(flatten1)
 

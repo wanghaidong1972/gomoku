@@ -28,7 +28,7 @@ logging.basicConfig(filename='training.log',format='%(asctime)s %(levelname)-8s 
 
 
 def single_game_play():
-    board = Board(width=8,height=8,n_in_row=5)
+    board = Board(width=15,height=15,n_in_row=5)
     game = Game(board)
     temp = 1.0
     player = MCTS_Pure()
@@ -58,15 +58,15 @@ class TrainPipeline():
         self.temp = 1.0  # the temperature param
         self.n_playout = 400  # num of simulations for each move
         self.c_puct = 5
-        self.buffer_size = 12000
-        self.batch_size = 2048  # mini-batch size for training
+        self.buffer_size = 36000
+        self.batch_size = 1024  # mini-batch size for training
         self.data_buffer = deque(maxlen=self.buffer_size)
-        self.play_batch_size = 2
-        self.pre_data_size = 10
+        self.play_batch_size = 1
+        self.pre_data_size = 5
         self.epochs = 5  # num of train_steps for each update
         self.kl_targ = 0.02
         # self.check_freq = 50
-        self.check_freq = 10 # when use predfined data
+        self.check_freq = 30 # when use predfined data
         self.game_batch_num = 300
         self.best_win_ratio = 0.0
         # num of simulations used for the pure mcts, which is used as
@@ -225,7 +225,9 @@ class TrainPipeline():
             for i in range(self.game_batch_num):
                 self.batch_i = i
                 self.collect_pre_data(self.pre_data_size)
-                self.collect_selfplay_data(self.play_batch_size) # use self play as well
+                if i > 1000 : # now the model should be applied to self play .
+                    self.collect_selfplay_data(self.play_batch_size) # use self play as well
+                    self.check_freq = 10 # increase check frequency when use self played data too.
 
                 # print("batch i:{}, episode_len:{}".format(i+1, self.episode_len))
                 print("batch i:{} is training".format(i+1))
