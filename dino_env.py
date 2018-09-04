@@ -70,7 +70,7 @@ class DinoEnv:
         return self._initial_stack
 
     def step(self, a):
-        reward = 0.02
+        reward = 0.1
         action = self._action_set[a]
 
         # self._resume()
@@ -122,7 +122,7 @@ class DinoEnv:
         hard_copy = np.array(Image.open(BytesIO(base64.b64decode(image_b64))))
         image = process_img(hard_copy)  # processing image as required
 
-        # self._display.send(image)
+        self._display.send(image)
 
         return image
 

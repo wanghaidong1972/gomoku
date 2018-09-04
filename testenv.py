@@ -99,7 +99,7 @@ def train(env):
             max_Q = np.argmax(q)  # choose action with maximum q value
             action = max_Q
 
-        next_s, reward,isover,others = env.step(action)
+        next_s, reward, isover, others = env.step(action)
         data_buffer.append((current_s, action, reward, next_s, isover))
 
         if isover:
