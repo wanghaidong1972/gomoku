@@ -7,7 +7,6 @@ import io
 import time
 import pandas as pd
 import numpy as np
-from IPython.display import clear_output
 from random import randint
 import os
 
@@ -30,7 +29,8 @@ import base64
 import json
 
 # path variables
-chrome_driver_path = "chromedriver.exe"
+# chrome_driver_path = "chromedriver.exe"
+chrome_driver_path = "./chromedriver"
 loss_file_path = "./objects/loss_df.csv"
 actions_file_path = "./objects/actions_df.csv"
 q_value_file_path = "./objects/q_values.csv"
@@ -331,7 +331,6 @@ def trainNetwork(model, game_state, observe=False):
             q_values_df.to_csv(q_value_file_path, index=False)
             with open("model.json", "w") as outfile:
                 json.dump(model.to_json(), outfile)
-            clear_output()
             game_state._game.resume()
         # print info
         state = ""
@@ -342,7 +341,8 @@ def trainNetwork(model, game_state, observe=False):
         else:
             state = "train"
 
-        print("TIMESTEP", t, "/ STATE", state, "/ EPSILON", epsilon, "/ ACTION", action_index, "/ REWARD", r_t,
+        if t%10 == 0:
+            print("TIMESTEP", t, "/ STATE", state, "/ EPSILON", epsilon, "/ ACTION", action_index, "/ REWARD", r_t,
               "/ Q_MAX ", np.max(Q_sa), "/ Loss ", loss)
 
     print("Episode finished!")

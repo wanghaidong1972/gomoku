@@ -19,7 +19,7 @@ def show_img():
         img = (yield)
         window_title = "playing"
         cv2.namedWindow(window_title, cv2.WINDOW_NORMAL)
-        img = cv2.resize(img, (400, 400))
+        img = cv2.resize(img, (80, 80))
         cv2.imshow(window_title, img)
         if (cv2.waitKey(1) & 0xFF == ord('q')):
             cv2.destroyAllWindows()
@@ -83,13 +83,16 @@ class DinoEnv:
         ob = ob.reshape(1, ob.shape[0], ob.shape[1], 1)
         np.append(ob, self._image_stack[:, :, :, :3], axis=3)
 
+        gameover = False
+
         if self._is_over():
+            gameover = True
             reward = -1
             self._restart()
 
         # self._pause()
 
-        return self._image_stack, reward, self._is_over(), {}
+        return self._image_stack, reward, gameover, {}
 
     def _pause(self):
         return self._driver.execute_script("return Runner.instance_.stop()")
@@ -119,7 +122,7 @@ class DinoEnv:
         hard_copy = np.array(Image.open(BytesIO(base64.b64decode(image_b64))))
         image = process_img(hard_copy)  # processing image as required
 
-        self._display.send(image)
+        # self._display.send(image)
 
         return image
 
@@ -129,7 +132,6 @@ class DinoEnv:
         return len(self._action_set)
 
     def _get_obs(self):
-        # todo  should return a stack of images instead of one image
         img = self._get_image()
         return img
 

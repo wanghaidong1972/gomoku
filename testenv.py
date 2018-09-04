@@ -10,6 +10,7 @@ from keras.models import load_model
 import random
 import pickle
 import os
+import time
 
 BUFFER_SIZE = 60000
 
@@ -84,6 +85,7 @@ def train(env):
     else:
         step = 0
 
+    last_time = time.time()
     while True:
         Q_value = 0
         step += 1
@@ -91,7 +93,7 @@ def train(env):
 
         if random.random() <= epsilon:  # exploration
             print("--------------random action ----------")
-            action = 1
+            action = 0
         else:  # exploitation
             q = model.predict(current_s)  # get the prediction by current status
             max_Q = np.argmax(q)  # choose action with maximum q value
@@ -140,10 +142,15 @@ def train(env):
             # loss += model.train_on_batch(inputs, targets)
             loss = model.train_on_batch(inputs, targets)
             # env.resume()
-            print ("loss is {} and Q_value is {}".format(loss,Q_value))
+            if step%10 == 0:
+                print ("epsilon is {} and loss is {} and Q_value is {}".format(epsilon,loss,Q_value))
 
-env = DinoEnv()
-# env = DinoEnv("./chromedriver")
+
+        print('fps: {0}'.format(1 / (time.time() - last_time)))  # helpful for measuring frame rate
+        last_time = time.time()
+
+# env = DinoEnv()
+env = DinoEnv("./chromedriver")
 
 data_buffer = load_obj(BUFFER_FILE) if os.path.exists(BUFFER_FILE) else deque(maxlen=BUFFER_SIZE)
 
@@ -153,4 +160,6 @@ except Exception as e:
     print(e)
     env.close()
 
+
+#todo batchsize  framerate random/action eisilon/declay/rate  reward/number
 
