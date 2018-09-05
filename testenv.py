@@ -16,9 +16,14 @@ BUFFER_SIZE = 60000
 
 ACTIONS = 2  #  jump or keep stay
 GAMMA = 0.99  # decay rate of past observations original 0.99
-BATCH_SIZE = 32  # size of minibatch
+BATCH_SIZE = 16  # size of minibatch
 LEARNING_RATE = 1e-4
 EPSILON_DECAY = 0.99999 # decay rate of epsilon
+
+OBSERVATION = 100.  # timesteps to observe before training
+EXPLORE = 100000  # frames over which to anneal epsilon
+FINAL_EPSILON = 0.0001  # final value of epsilon
+INITIAL_EPSILON = 0.1  # starting value of epsilon
 
 EPSILON_FILE = "epsilon.pkl"
 BUFFER_FILE = "buffer.pkl"
@@ -89,11 +94,15 @@ def train(env):
     while True:
         Q_value = 0
         step += 1
-        epsilon *= EPSILON_DECAY # todo this method should be adjusted
+        # epsilon *= EPSILON_DECAY # todo this method should be adjusted
+        # We reduced the epsilon (exploration parameter) gradually
+        if epsilon > FINAL_EPSILON and step > OBSERVATION:
+            epsilon -= (INITIAL_EPSILON - FINAL_EPSILON) / EXPLORE
 
         if random.random() <= epsilon:  # exploration
             print("--------------random action ----------")
-            action = 0
+            # action = 0
+            action = random.randrange(ACTIONS)
         else:  # exploitation
             q = model.predict(current_s)  # get the prediction by current status
             max_Q = np.argmax(q)  # choose action with maximum q value
@@ -144,13 +153,12 @@ def train(env):
             # env.resume()
             if step%10 == 0:
                 print ("epsilon is {} and loss is {} and Q_value is {}".format(epsilon,loss,Q_value))
+                print('fps: {0}'.format(1 / (time.time() - last_time)))  # helpful for measuring frame rate
 
-
-        print('fps: {0}'.format(1 / (time.time() - last_time)))  # helpful for measuring frame rate
         last_time = time.time()
 
-# env = DinoEnv()
-env = DinoEnv("./chromedriver")
+env = DinoEnv()
+#env = DinoEnv("./chromedriver")
 
 data_buffer = load_obj(BUFFER_FILE) if os.path.exists(BUFFER_FILE) else deque(maxlen=BUFFER_SIZE)
 
