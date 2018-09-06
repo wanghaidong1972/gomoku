@@ -1,4 +1,5 @@
-import numpy as np
+# coding: utf-8
+
 import os
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -8,11 +9,13 @@ from PIL import Image
 from io import BytesIO
 import base64
 import cv2
-import time
 
 import numpy as np
 import copy
+from collections import deque
 
+COL_SIZE = 80
+ROW_SIZE = 80
 
 def show_img():
     while True:
@@ -27,7 +30,7 @@ def show_img():
 
 
 def process_img(image):
-    image = cv2.resize(image, (80, 80))
+    image = cv2.resize(image, (COL_SIZE, ROW_SIZE))
     image = image[:300, :500]  # Crop ROI
     image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)  # RGB to Grey Scale
     return image
@@ -54,11 +57,16 @@ class DinoEnv:
         self._jump() # start the game
 
         img_0 = self._get_image()
+
         self._image_stack = np.stack((img_0, img_0, img_0, img_0), axis=2)  # initialize stack
         self._image_stack = self._image_stack.reshape(1,
-                                                      self._image_stack.shape[0],
-                                                      self._image_stack.shape[1],
+                                                      COL_SIZE,
+                                                      ROW_SIZE,
                                                       -1)
+        # self._image_stack = deque(maxlen=STACK_SIZE)
+        # for i in range(STACK_SIZE):
+            # self._image_stack.append(img_0)
+
         self._initial_stack = copy.deepcopy(self._image_stack)
 
         # self._pause()
@@ -77,12 +85,18 @@ class DinoEnv:
         if action == 1:  # jump
             self._jump()
         else:
-            # time.sleep(0.08)
             pass
         ob = self._get_obs()
-        ob = ob.reshape(1, ob.shape[0], ob.shape[1], 1)
-        np.append(ob, self._image_stack[:, :, :, :3], axis=3)
+        ob = ob.reshape(1,COL_SIZE, ROW_SIZE,1)
 
+        state_1 = np.append(ob, self._image_stack[:, :, :, :3], axis=3)
+        # self._image_stack.append(ob)
+
+        '''
+        state_1 = list(self._image_stack)
+        state_1 = np.array(state_1)
+        state_1 = state_1.reshape(-1,STACK_SIZE,COL_SIZE,ROW_SIZE)
+       '''
         gameover = False
 
         if self._is_over():
@@ -92,7 +106,7 @@ class DinoEnv:
 
         # self._pause()
 
-        return self._image_stack, reward, gameover, {}
+        return state_1, reward, gameover, {}
 
     def _pause(self):
         return self._driver.execute_script("return Runner.instance_.stop()")
