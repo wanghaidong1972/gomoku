@@ -89,14 +89,8 @@ class DinoEnv:
         ob = self._get_obs()
         ob = ob.reshape(1,COL_SIZE, ROW_SIZE,1)
 
-        state_1 = np.append(ob, self._image_stack[:, :, :, :3], axis=3)
-        # self._image_stack.append(ob)
+        self._image_stack = np.append(ob, self._image_stack[:, :, :, :3], axis=3)
 
-        '''
-        state_1 = list(self._image_stack)
-        state_1 = np.array(state_1)
-        state_1 = state_1.reshape(-1,STACK_SIZE,COL_SIZE,ROW_SIZE)
-       '''
         gameover = False
 
         if self._is_over():
@@ -106,7 +100,7 @@ class DinoEnv:
 
         # self._pause()
 
-        return state_1, reward, gameover, {}
+        return self._image_stack, reward, gameover, {}
 
     def _pause(self):
         return self._driver.execute_script("return Runner.instance_.stop()")
